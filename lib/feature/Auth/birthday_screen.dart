@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:project/constants/gaps.dart';
 import 'package:project/constants/sizes.dart';
 import 'package:project/feature/Auth/constants/form_button.dart';
+import 'package:project/feature/onboarding/interest/%08view/interest_screen.dart';
 
 class BirthdayScreen extends ConsumerStatefulWidget {
   const BirthdayScreen({super.key});
@@ -32,6 +34,10 @@ class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
   void _setTextFieldDate(DateTime date) {
     final String textDate = date.toString().split(" ").first;
     _birthdayController.value = TextEditingValue(text: textDate);
+  }
+
+  void _onNextTap() {
+    context.pushReplacementNamed(InterestScreen.routeName);
   }
 
   @override
@@ -65,9 +71,12 @@ class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
               enabled: false,
             ),
             Gaps.v32,
-            const FormButton(
-              disabled: false,
-              text: "Next",
+            GestureDetector(
+              onTap: _onNextTap,
+              child: const FormButton(
+                disabled: false,
+                text: "Next",
+              ),
             ),
           ],
         ),

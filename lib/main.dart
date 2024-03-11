@@ -1,10 +1,29 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project/feature/onboarding/interest/repo/interest_repo.dart';
+import 'package:project/feature/onboarding/interest/viewmodel/interest_screen_vm.dart';
 import 'package:project/router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const ProviderScope(child: App()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final preferences = await SharedPreferences.getInstance();
+  final repository = InterestRepository(preferences);
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        interestProvider.overrideWith(
+          () => InterestViewModel(
+            repository,
+          ),
+        ),
+      ],
+      child: const App(),
+    ),
+  );
 }
 
 class App extends ConsumerWidget {
