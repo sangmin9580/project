@@ -7,6 +7,8 @@ import 'package:project/constants/sizes.dart';
 import 'package:project/feature/Auth/birthday_screen.dart';
 import 'package:project/feature/Auth/constants/form_button.dart';
 
+import 'view_model/signup_view_model.dart';
+
 class PasswordScreen extends ConsumerStatefulWidget {
   const PasswordScreen({super.key});
 
@@ -61,6 +63,7 @@ class _UsernameScreenState extends ConsumerState<PasswordScreen> {
 
   void _onNextTap() {
     if (_password.isEmpty || !regExp.hasMatch(_password)) return;
+    ref.read(signupForm.notifier).state = {"password": _password};
     Navigator.push(
       context,
       MaterialPageRoute(

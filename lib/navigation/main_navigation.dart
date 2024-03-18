@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project/feature/discover/discover_screen.dart';
+import 'package:project/feature/inbox/inbox_screen.dart';
+import 'package:project/feature/profile/view/profile_screen.dart';
+import 'package:project/feature/video/video_timeline_screen.dart';
 
 class MainNavigationScreen extends ConsumerStatefulWidget {
   const MainNavigationScreen({super.key});
@@ -50,24 +54,19 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
       initialIndex: _index,
       length: 5,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(children: [
           Offstage(
             offstage: _index != 0,
-            child: const Center(
-              child: Text("1"),
-            ),
+            child: const VideotimelineScreen(),
           ),
           Offstage(
             offstage: _index != 1,
-            child: const Center(
-              child: Text("2"),
-            ),
+            child: const DiscoverScreen(),
           ),
           Offstage(
             offstage: _index != 2,
-            child: const Center(
-              child: Text("3"),
-            ),
+            child: const InboxScreen(),
           ),
           Offstage(
             offstage: _index != 3,
@@ -75,12 +74,7 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
               child: Text("4"),
             ),
           ),
-          Offstage(
-            offstage: _index != 4,
-            child: const Center(
-              child: Text("5"),
-            ),
-          ),
+          Offstage(offstage: _index != 4, child: const ProfileScreen()),
         ]),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

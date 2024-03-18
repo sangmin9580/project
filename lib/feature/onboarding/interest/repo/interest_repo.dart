@@ -6,6 +6,7 @@ class InterestRepository {
   InterestRepository(this._sharedPreferences);
 
   static const String _clickCount = "clickCount";
+  static const List<String> interests = [];
 
   static String get clickCount => _clickCount;
 

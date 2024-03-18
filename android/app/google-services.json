@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "398730560250",
+    "project_id": "final-pracitice-tiktok",
+    "storage_bucket": "final-pracitice-tiktok.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398730560250:android:591817ef8107d7e9253f43",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFjj4zk8t-CFBbGNbO2-uKjdOtRHVVCJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

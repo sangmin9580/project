@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project/feature/onboarding/interest/model/interest_model.dart';
 import 'package:project/feature/onboarding/interest/repo/interest_repo.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class InterestViewModel extends Notifier<InterestModel> {
   final InterestRepository _interestRepository;
@@ -24,9 +23,9 @@ class InterestViewModel extends Notifier<InterestModel> {
   }
 
   Future<void> resetStoredValue() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(InterestRepository.clickCount, 0);
-    ref.read(interestProvider.notifier).resetClickCount();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // await prefs.setInt(InterestRepository.clickCount, 0);
+    // ref.read(interestProvider.notifier).resetClickCount();
   }
 
   void resetClickCount() {

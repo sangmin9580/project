@@ -65,20 +65,31 @@ class _InterestScreenState extends ConsumerState<InterestScreen> {
   @override
   void initState() {
     super.initState();
-    _resetStoredValue();
-    ref.read(interestProvider.notifier).resetStoredValue;
+
+    print("aaa");
+    // _resetStoredValue();
+    // ref.read(interestProvider.notifier).resetStoredValue;
+    initializeStoredValues();
+  }
+
+  Future<void> initializeStoredValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final oldCounts = prefs.getInt(InterestRepository.clickCount);
+
+    ref.read(interestProvider.notifier).setclickCount(oldCounts ?? 0);
   }
 
   Future<void> _resetStoredValue() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    // print("bbb");
     await prefs.setInt(
       InterestRepository.clickCount,
       0,
     ); // 'your_key'를 0으로 초기화
-    print("dd");
-    print(
-      "new ${ref.read(interestProvider).clickCount}",
-    );
+
+    final a = prefs.getInt(InterestRepository.clickCount);
+    print({a});
+    ref.read(interestProvider.notifier).resetClickCount();
   }
 
   void _onNextTap() {
@@ -92,6 +103,7 @@ class _InterestScreenState extends ConsumerState<InterestScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(ref.watch(interestProvider).clickCount);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(

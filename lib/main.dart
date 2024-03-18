@@ -1,13 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project/feature/onboarding/interest/repo/interest_repo.dart';
 import 'package:project/feature/onboarding/interest/viewmodel/interest_screen_vm.dart';
+import 'package:project/firebase_options.dart';
 import 'package:project/router.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   final preferences = await SharedPreferences.getInstance();
   final repository = InterestRepository(preferences);
@@ -33,7 +40,7 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: router,
+      routerConfig: ref.watch(routerProvider),
       // Theme config for FlexColorScheme version 7.3.x. Make sure you use
 // same or higher package version, but still same major version. If you
 // use a lower package version, some properties may not be supported.

@@ -14,12 +14,12 @@ class BirthdayScreen extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _BirthdayScreenState();
 }
 
-/**
- *Textfield에 초기값을 넣어주고 싶음. 오늘날의 시간을 기본값으로
- 그러면 Datetime.now()를 texteditingValue값으로 넣어줘야함
- 컨트롤러 생성하고, 초기 데이터값을 가져오는 함수를 만들어야함. 
- *시간이 변하는데로 value값이 변하게 로직생성
- */
+// /**
+//  *Textfield에 초기값을 넣어주고 싶음. 오늘날의 시간을 기본값으로
+//  그러면 Datetime.now()를 texteditingValue값으로 넣어줘야함
+//  컨트롤러 생성하고, 초기 데이터값을 가져오는 함수를 만들어야함.
+//  *시간이 변하는데로 value값이 변하게 로직생성
+//  */
 
 class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
   final TextEditingController _birthdayController = TextEditingController();
@@ -38,6 +38,12 @@ class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
 
   void _onNextTap() {
     context.pushReplacementNamed(InterestScreen.routeName);
+  }
+
+  @override
+  void dispose() {
+    _birthdayController.dispose();
+    super.dispose();
   }
 
   @override

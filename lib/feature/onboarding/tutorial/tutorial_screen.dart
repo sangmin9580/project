@@ -20,7 +20,6 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
   Direction _direction = Direction.right;
 
   void _onPanUpdate(DragUpdateDetails details) {
-    print(details);
     if (details.delta.dx < 0) {
       _direction = Direction.left;
     } else {

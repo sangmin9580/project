@@ -10,6 +10,8 @@ import 'package:project/feature/Auth/user_name_screen.dart';
 
 class SignupScreen extends ConsumerWidget {
   const SignupScreen({super.key});
+  static const routeURL = '/';
+  static const routeName = '/';
 
   void _onLoginTap(BuildContext context) {
     context.pushNamed(LoginScreen.routeName);
