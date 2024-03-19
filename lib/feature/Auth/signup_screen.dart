@@ -18,7 +18,12 @@ class SignupScreen extends ConsumerWidget {
   }
 
   void _onEmailTap(BuildContext context) {
-    context.push(UsernameScreen.routeURL);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const UsernameScreen(),
+      ),
+    );
   }
 
   @override
@@ -51,9 +56,12 @@ class SignupScreen extends ConsumerWidget {
                 Gaps.v32,
                 GestureDetector(
                   onTap: () => _onEmailTap(context),
-                  child: const AuthButton(
-                    text: "Use phone or email",
-                    icon: FontAwesomeIcons.user,
+                  child: GestureDetector(
+                    onTap: () => _onEmailTap(context),
+                    child: const AuthButton(
+                      text: "Use phone or email",
+                      icon: FontAwesomeIcons.user,
+                    ),
                   ),
                 ),
                 Gaps.v16,

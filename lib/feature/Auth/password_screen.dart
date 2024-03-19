@@ -63,7 +63,8 @@ class _UsernameScreenState extends ConsumerState<PasswordScreen> {
 
   void _onNextTap() {
     if (_password.isEmpty || !regExp.hasMatch(_password)) return;
-    ref.read(signupForm.notifier).state = {"password": _password};
+    final state = ref.read(signupForm.notifier).state;
+    ref.read(signupForm.notifier).state = {...state, "password": _password};
     Navigator.push(
       context,
       MaterialPageRoute(

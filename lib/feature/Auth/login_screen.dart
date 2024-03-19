@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:project/constants/gaps.dart';
 import 'package:project/constants/sizes.dart';
 import 'package:project/feature/Auth/constants/auth_button.dart';
+import 'package:project/feature/Auth/login_form_screen.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
@@ -14,6 +15,15 @@ class LoginScreen extends ConsumerWidget {
 
   void _onSignupTap(BuildContext context) {
     context.pop();
+  }
+
+  void _onLoginTap(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const LoginformScreen(),
+      ),
+    );
   }
 
   @override
@@ -45,9 +55,12 @@ class LoginScreen extends ConsumerWidget {
                   ),
                 ),
                 Gaps.v32,
-                const AuthButton(
-                  text: "Use phone / email / username",
-                  icon: FontAwesomeIcons.user,
+                GestureDetector(
+                  onTap: () => _onLoginTap(context),
+                  child: const AuthButton(
+                    text: "Use phone / email / username",
+                    icon: FontAwesomeIcons.user,
+                  ),
                 ),
                 Gaps.v16,
                 const AuthButton(

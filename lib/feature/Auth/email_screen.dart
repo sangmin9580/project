@@ -4,8 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project/constants/gaps.dart';
 import 'package:project/constants/sizes.dart';
+
 import 'package:project/feature/Auth/constants/form_button.dart';
 import 'package:project/feature/Auth/password_screen.dart';
+import 'package:project/feature/Auth/view_model/signup_view_model.dart';
 
 class EmailScreen extends ConsumerStatefulWidget {
   const EmailScreen({
@@ -37,8 +39,12 @@ class _EmailScreenState extends ConsumerState<EmailScreen> {
 
   void _onNextTap() {
     if (_email.isEmpty || !regExp.hasMatch(_email)) return;
-    context.push(
-      PasswordScreen.routeURL,
+    ref.read(signupForm.notifier).state = {"email": _email};
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PasswordScreen(),
+      ),
     );
   }
 

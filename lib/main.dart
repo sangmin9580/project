@@ -16,6 +16,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+
   final preferences = await SharedPreferences.getInstance();
   final repository = InterestRepository(preferences);
 

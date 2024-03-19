@@ -7,6 +7,7 @@ import 'package:project/feature/Auth/repos/authentication_repo.dart';
 import 'package:project/feature/Auth/signup_screen.dart';
 import 'package:project/feature/Auth/user_name_screen.dart';
 import 'package:project/feature/onboarding/interest/%08view/interest_screen.dart';
+import 'package:project/feature/onboarding/tutorial/tutorial_screen.dart';
 import 'package:project/navigation/main_navigation.dart';
 
 final routerProvider = Provider((ref) {
@@ -52,6 +53,11 @@ final routerProvider = Provider((ref) {
         path: MainNavigationScreen.routeURL,
         name: MainNavigationScreen.routeName,
         builder: (context, state) => const MainNavigationScreen(),
+      ),
+      GoRoute(
+        path: TutorialScreen.routeURL,
+        name: TutorialScreen.routeName,
+        builder: (context, state) => const TutorialScreen(),
       )
     ],
   );

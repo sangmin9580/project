@@ -10,6 +10,8 @@ enum Direction { right, left }
 
 class TutorialScreen extends ConsumerStatefulWidget {
   const TutorialScreen({super.key});
+  static const routeURL = '/tutorial';
+  static const routeName = 'tutorial';
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _TutorialScreenState();

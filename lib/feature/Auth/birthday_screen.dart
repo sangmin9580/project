@@ -5,7 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:project/constants/gaps.dart';
 import 'package:project/constants/sizes.dart';
 import 'package:project/feature/Auth/constants/form_button.dart';
+import 'package:project/feature/Auth/repos/authentication_repo.dart';
+import 'package:project/feature/Auth/view_model/signup_view_model.dart';
 import 'package:project/feature/onboarding/interest/%08view/interest_screen.dart';
+import 'package:project/feature/onboarding/tutorial/tutorial_screen.dart';
 
 class BirthdayScreen extends ConsumerStatefulWidget {
   const BirthdayScreen({super.key});
@@ -37,7 +40,12 @@ class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    context.pushReplacementNamed(InterestScreen.routeName);
+    ref.read(signupProvider.notifier).signUp(context);
+    if (ref.read(authRepo).isLoggedIn) {
+      context.goNamed(
+        TutorialScreen.routeName,
+      );
+    }
   }
 
   @override
@@ -79,8 +87,8 @@ class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
             Gaps.v32,
             GestureDetector(
               onTap: _onNextTap,
-              child: const FormButton(
-                disabled: false,
+              child: FormButton(
+                disabled: ref.watch(signupProvider).isLoading,
                 text: "Next",
               ),
             ),

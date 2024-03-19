@@ -22,6 +22,7 @@ class FormButton extends StatelessWidget {
             width: 0.1,
             color: Colors.grey.shade50,
           ),
+          borderRadius: BorderRadius.circular(5),
         ),
         duration: const Duration(
           milliseconds: 300,

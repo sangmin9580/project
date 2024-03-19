@@ -9,8 +9,8 @@ import 'package:project/feature/video/video_timeline_screen.dart';
 class MainNavigationScreen extends ConsumerStatefulWidget {
   const MainNavigationScreen({super.key});
 
-  static const routeURL = "/main";
-  static const routeName = "mainNavigation";
+  static const routeURL = "/home";
+  static const routeName = "home";
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
